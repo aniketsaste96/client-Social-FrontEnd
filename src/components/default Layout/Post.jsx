@@ -1,26 +1,49 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import CommentIcon from "@material-ui/icons/Comment";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import Tooltip from "@material-ui/core/Tooltip";
 import IconButton from "@material-ui/core/IconButton";
-import { LikeOrUnlikePost, getAllPosts } from "../../redux/actions/postActions";
+import {
+  LikeOrUnlikePost,
+  getAllPosts,
+  addComment,
+} from "../../redux/actions/postActions";
 import { useDispatch, useSelector } from "react-redux";
+import { Col, Row, Input } from "antd";
+
+import { Modal } from "antd";
+const { TextArea } = Input;
 const Post = ({ post }) => {
+  //comments
+  const [commentModalVisibility, setCommentModalVisibility] = useState(false);
+  const [comment, setComment] = useState("");
   //like dislike color
   const currentUser = JSON.parse(localStorage.getItem("user"));
   const alreadyLiked = post.likes.find(
     (obj) => obj.user.toString() === currentUser._id
   );
   //reloading after like of dislike
-  const { likeOrUnlikeLoading } = useSelector((state) => state.alertsReducer);
+  const { likeOrUnlikeLoading, addCommentLoading } = useSelector(
+    (state) => state.alertsReducer
+  );
   useEffect(() => {
     //fire  getAllPosts() when anything changes in likeOrUnlikeLoading
     dispatch(getAllPosts());
-  }, [likeOrUnlikeLoading]);
+  }, [likeOrUnlikeLoading, addCommentLoading]);
 
   const dispatch = useDispatch();
+
+  //modal functionality
+  const handleCancel = () => {
+    setCommentModalVisibility(false);
+  };
+  const handleOk = () => {
+    dispatch(addComment({ postid: post._id, comment: comment }));
+    setCommentModalVisibility(false);
+  };
+
   return (
     <div className="bs1 p-2 mb-5 ">
       <div className="d-flex align-items-center justify-content-between ">
@@ -59,11 +82,44 @@ const Post = ({ post }) => {
         </Tooltip>
         <Tooltip title="Comment" arrow>
           <IconButton aria-label="Comment">
-            <CommentIcon fontSize="large" color="primary" />
+            <CommentIcon
+              fontSize="large"
+              color="primary"
+              onClick={() => {
+                setCommentModalVisibility(true);
+              }}
+            />
             <p>{post.comments.length}</p>
           </IconButton>
         </Tooltip>
       </div>
+      <Modal
+        visible={commentModalVisibility}
+        title="comments"
+        onOk={handleOk}
+        onCancel={handleCancel}
+        closable={false}
+        width={900}
+        okText="ADD COMMENT"
+      >
+        <Row>
+          {/* xs={0} not showing on mobile */}
+          <Col lg={13} xs={0}>
+            <img src={post.image} alt="" className="postImageModal" />
+          </Col>
+          <Col lg={11} xs={24}>
+            <TextArea
+              placeholder="add your comment here..."
+              className="ml-2"
+              value={comment}
+              onChange={(e) => {
+                setComment(e.target.value);
+              }}
+            />
+          </Col>
+        </Row>
+        {/* Wehenever we click on this we are going to make it true */}
+      </Modal>
     </div>
   );
 };

@@ -75,3 +75,27 @@ export const LikeOrUnlikePost = (values) => async dispatch => {
     }
 
 }
+
+//comment
+
+export const addComment = (values) => async dispatch => {
+    //here we recive 2 things comment and post id from UI
+    values.userid = JSON.parse(localStorage.getItem('user'))._id.toString()
+
+
+    console.log(values)
+    dispatch({ type: 'ADD_COMMENT_LOADING', payload: true })
+
+    try {
+        await axios.post('/api/posts/addcomment', values)
+        dispatch({ type: 'ADD_COMMENT_LOADING', payload: false })
+
+
+
+    } catch (error) {
+        console.log(error)
+        dispatch({ type: 'ADD_COMMENT_LOADING', payload: false })
+        message.error('something went wrong')
+    }
+
+}

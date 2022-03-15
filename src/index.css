@@ -147,3 +147,12 @@ h4 {
   transition: 300ms;
   transform: scale(1.5) !important;
 }
+
+.postImageModal {
+  object-fit: cover;
+
+  height: 400px;
+  width: 450px;
+  border-radius: 15px !important;
+  margin-top: 10px;
+}

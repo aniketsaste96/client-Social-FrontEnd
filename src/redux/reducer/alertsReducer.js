@@ -1,6 +1,7 @@
 const initialState = {
     loading: false,
-    likeOrUnlikeLoading: false
+    likeOrUnlikeLoading: false,
+    addCommentLoading: false
 }
 
 export const alertsReducer = (state = initialState, action) => {
@@ -12,6 +13,11 @@ export const alertsReducer = (state = initialState, action) => {
         case "LIKE_UNLIKE_LOADING": return {
             ...state,
             likeOrUnlikeLoading: action.payload
+        }
+        case 'ADD_COMMENT_LOADING': return {
+            //whenever add comment cliked we are going to call this
+            ...state,
+            addCommentLoading: action.payload
         }
         default: return state
     }
