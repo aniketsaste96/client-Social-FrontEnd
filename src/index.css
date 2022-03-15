@@ -1,13 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+/* google font  */
+/* copy font family  also  */
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.bs1 {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px !important;
+}
+
+.register-div {
+  margin-top: 150px !important;
+}
+
+input,
+textarea {
+  border: 1px solid black !important;
+}
+input[type="file"] {
+  border: none !important;
+}
+
+.textCenter {
+  text-align: center;
+}
+/* spinner */
+
+html {
+  height: 100%;
+}
+
+.loader {
+  position: absolute;
+  top: calc(50% - 32px);
+  left: calc(50% - 32px);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  perspective: 800px;
+  z-index: 999;
+}
+
+.inner {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.inner.one {
+  left: 0%;
+  top: 0%;
+  animation: rotate-one 1s linear infinite;
+  border-bottom: 5px solid #0a0a0a;
+}
+
+.inner.two {
+  right: 0%;
+  top: 0%;
+  animation: rotate-two 1s linear infinite;
+  border-right: 5px solid #0808f3;
+}
+
+.inner.three {
+  right: 0%;
+  bottom: 0%;
+  animation: rotate-three 1s linear infinite;
+  border-top: 5px solid #f80713;
+}
+
+@keyframes rotate-one {
+  0% {
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotate-two {
+  0% {
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotate-three {
+  0% {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+  }
+}
+
+.profilepic1 {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  font-weight: bold;
+  background-color: grey;
+  font-size: 20px !important;
+  padding: 10px;
+  color: white;
+}
+.postImage {
+  object-fit: cover;
+  width: 95%;
+  height: 500px;
+  border-radius: 15px !important;
+  margin-top: 10px;
+}
+
+p {
+  color: grey;
+  margin: 5px !important;
+  font-size: 18px !important;
+}
+
+.iconsBelow {
+  display: flex;
+  justify-content: space-between;
+}
+
+h4 {
+  margin: 5px;
+}
+
+.Icons:hover {
+  transition: 300ms;
+  transform: scale(1.5) !important;
 }
