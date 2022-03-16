@@ -111,9 +111,9 @@ html {
 }
 
 .profilepic1 {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
+  height: 50px !important;
+  width: 50px !important;
+  border-radius: 50% !important;
   font-weight: bold;
   background-color: grey;
   font-size: 20px !important;
@@ -156,3 +156,8 @@ h4 {
   border-radius: 15px !important;
   margin-top: 10px;
 }
+
+/* .editImg {
+  object-fit: cover;
+  border-radius: 50%;
+} */

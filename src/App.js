@@ -3,6 +3,7 @@ import './App.css';
 import Home from "./pages/Home"
 import Addpost from "./pages/Addpost"
 import Profile from "./pages/Profile"
+import EditProfile from "./pages/EditProfile"
 import 'antd/dist/antd.css';
 import { BrowserRouter, Route, Redirect } from "react-router-dom"
 import Login from "./pages/Login"
@@ -42,7 +43,7 @@ function App() {
       <ProtectedRoute exact path="/">
         <Home />
       </ProtectedRoute>
-      <ProtectedRoute exact path="/profile">
+      <ProtectedRoute exact path="/profile/:userid" >
         <Profile />
       </ProtectedRoute>
       <ProtectedRoute exact path="/addpost">
@@ -50,6 +51,9 @@ function App() {
       </ProtectedRoute>
       <ProtectedRoute exact path="/allusers">
         <AllUsers />
+      </ProtectedRoute>
+      <ProtectedRoute exact path="/editprofile">
+        <EditProfile />
       </ProtectedRoute>
     </div>
   );

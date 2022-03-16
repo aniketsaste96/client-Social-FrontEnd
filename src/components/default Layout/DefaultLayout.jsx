@@ -26,6 +26,9 @@ class DefaultLayout extends React.Component {
   };
 
   render() {
+    //send logged in use data
+
+    const user = JSON.parse(localStorage.getItem("user"));
     return (
       <Layout>
         <Layout className="site-layout">
@@ -68,7 +71,7 @@ class DefaultLayout extends React.Component {
               <Link to="/addpost">Add post</Link>
             </Menu.Item>
             <Menu.Item key="profile" icon={<UserOutlined />}>
-              <Link to="/profile">Profile</Link>
+              <Link to={`/profile/${user._id}`}>Profile</Link>
             </Menu.Item>
             <Menu.Item key="allusers" icon={<UserOutlined />}>
               <Link to="/allusers">All Users</Link>
