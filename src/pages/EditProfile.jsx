@@ -55,7 +55,7 @@ const EditProfile = () => {
                         {user.username[0].toUpperCase()}
                       </span>
                     ) : (
-                      <img src={profilePicUrl} alt="" />
+                      <img src={profilePicUrl} alt="" className="profilepic2" />
                     )}
                     <Input type="file" onChange={handleFileSubmit} />
                   </div>

@@ -60,7 +60,11 @@ const AllUsers = () => {
                             {user.username[0].toUpperCase()}
                           </span>
                         ) : (
-                          <img src={user.profilePicUrl} alt="" />
+                          <img
+                            src={user.profilePicUrl}
+                            alt=""
+                            className="profilepic2"
+                          />
                         )}
                         <Link>{user.username}</Link>
                         <p>{moment(user.createdAt).format("MMM DD yyyy")}</p>

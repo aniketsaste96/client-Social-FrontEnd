@@ -54,7 +54,7 @@ const Post = ({ post }) => {
             {post.user.username[0].toUpperCase()}
           </span>
         ) : (
-          <img src={post.user.profilePicUrl} alt="" />
+          <img src={post.user.profilePicUrl} alt="" className="profilepic2" />
         )}
         <Link className="pl-2 userText" to="/">
           {post.user.username.charAt(0).toUpperCase() +
@@ -119,20 +119,24 @@ const Post = ({ post }) => {
               }}
             />
             {post.comments.map((comment) => {
-              const user = users.find((obj) => obj._id === comment.user);
+              const user = users?.find((obj) => obj._id === comment.user);
               console.log(user);
               return (
                 <div className="d-flex align-items-center mt-2 justify-content-between">
                   <div className="d-flex align-items-center">
-                    {user.profilePicUrl === "" ? (
+                    {user?.profilePicUrl == "" ? (
                       <span className="profilepic1">
                         {user.username[0].toUpperCase()}
                       </span>
                     ) : (
-                      <img src={post.user.profilePicUrl} alt="" />
+                      <img
+                        src={post.user.profilePicUrl}
+                        alt=""
+                        className="profilepic2"
+                      />
                     )}
                     <Link style={{ fontSize: 15 }} className="ml-1">
-                      {user.username}
+                      {user?.username}
                     </Link>
                     <p>{comment.comment}</p>
                   </div>

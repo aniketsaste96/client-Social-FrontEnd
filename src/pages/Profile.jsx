@@ -6,13 +6,15 @@ import { useParams, Link } from "react-router-dom";
 import moment from "moment";
 import EditIcon from "@material-ui/icons/Edit";
 import { Button } from "@material-ui/core";
-const Profile = () => {
+const Profile = ({ match }) => {
   const { userid } = useParams();
   const { users } = useSelector((state) => state.usersReducer);
   const { posts } = useSelector((state) => state.postsReducer);
   //find user
-  const user = users?.find((obj) => obj._id === userid);
-  const userposts = posts?.filter((obj) => obj.user._id === userid);
+  const user = users.find(async (obj) => (await obj._id) === userid);
+  const userposts = posts.filter(
+    async (obj) => (await obj.user._id) === userid
+  );
 
   console.log(user);
 
@@ -29,7 +31,11 @@ const Profile = () => {
                       {user.username[0].toUpperCase()}
                     </span>
                   ) : (
-                    <img src={user.profilePicUrl} alt="" />
+                    <img
+                      src={user.profilePicUrl}
+                      alt=""
+                      className="profilepic1"
+                    />
                   )}
                   <div className="text-left">
                     <p style={{ color: "black" }}>{user.username}</p>

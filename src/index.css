@@ -120,6 +120,16 @@ html {
   padding: 10px;
   color: white;
 }
+.profilepic2 {
+  height: 60px !important;
+  width: 60px !important;
+  border-radius: 50% !important;
+  font-weight: bold;
+  object-fit: cover;
+  font-size: 20px !important;
+  padding: 10px;
+  color: white;
+}
 .postImage {
   object-fit: cover;
   width: 95%;
@@ -157,7 +167,7 @@ h4 {
   margin-top: 10px;
 }
 
-/* .editImg {
-  object-fit: cover;
-  border-radius: 50%;
-} */
+.profilepic2 {
+  width: 100px;
+  height: 100px;
+}
