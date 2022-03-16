@@ -8,6 +8,7 @@ import {
   VideoCameraOutlined,
   UploadOutlined,
   LogoutOutlined,
+  UsersOutlined,
 } from "@ant-design/icons";
 import PersonIcon from "@material-ui/icons/Person";
 import "./defaultlayout.css";
@@ -60,16 +61,19 @@ class DefaultLayout extends React.Component {
             //window.location.pathname highlight when we are in particular page
             defaultSelectedKeys={[window.location.pathname]}
           >
-            <Menu.Item key="1" icon={<UserOutlined />}>
+            <Menu.Item key="/" icon={<UserOutlined />}>
               <Link to="/">Home</Link>
             </Menu.Item>
-            <Menu.Item key="2" icon={<VideoCameraOutlined />}>
+            <Menu.Item key="addpost" icon={<VideoCameraOutlined />}>
               <Link to="/addpost">Add post</Link>
             </Menu.Item>
-            <Menu.Item key="3" icon={<UploadOutlined />}>
+            <Menu.Item key="profile" icon={<UserOutlined />}>
               <Link to="/profile">Profile</Link>
             </Menu.Item>
-            <Menu.Item key="4" icon={<LogoutOutlined />}>
+            <Menu.Item key="allusers" icon={<UserOutlined />}>
+              <Link to="/allusers">All Users</Link>
+            </Menu.Item>
+            <Menu.Item key="5" icon={<LogoutOutlined />}>
               <Link
                 onClick={() => {
                   localStorage.removeItem("user", window.location.reload());

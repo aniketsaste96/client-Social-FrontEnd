@@ -19,6 +19,8 @@ const Post = ({ post }) => {
   //comments
   const [commentModalVisibility, setCommentModalVisibility] = useState(false);
   const [comment, setComment] = useState("");
+  const { users } = useSelector((state) => state.usersReducer);
+
   //like dislike color
   const currentUser = JSON.parse(localStorage.getItem("user"));
   const alreadyLiked = post.likes.find(
@@ -116,6 +118,30 @@ const Post = ({ post }) => {
                 setComment(e.target.value);
               }}
             />
+            {post.comments.map((comment) => {
+              const user = users.find((obj) => obj._id === comment.user);
+              console.log(user);
+              return (
+                <div className="d-flex align-items-center mt-2 justify-content-between">
+                  <div className="d-flex align-items-center">
+                    {user.profilePicUrl === "" ? (
+                      <span className="profilepic1">
+                        {user.username[0].toUpperCase()}
+                      </span>
+                    ) : (
+                      <img src={post.user.profilePicUrl} alt="" />
+                    )}
+                    <Link style={{ fontSize: 15 }} className="ml-1">
+                      {user.username}
+                    </Link>
+                    <p>{comment.comment}</p>
+                  </div>
+                  <div>
+                    <i style={{ fontSize: 13 }}>{comment.date}</i>
+                  </div>
+                </div>
+              );
+            })}
           </Col>
         </Row>
         {/* Wehenever we click on this we are going to make it true */}

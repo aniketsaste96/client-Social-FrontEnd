@@ -10,12 +10,15 @@ import Register from "./pages/Register"
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect } from "react";
 import { getAllPosts } from './redux/actions/postActions';
+import { getAllUsers } from './redux/actions/userActions';
+import AllUsers from './pages/AllUsers';
 function App() {
 
   const { loading, LikeOrUnlikeLoading } = useSelector((state) => state.alertsReducer);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllPosts())
+    dispatch(getAllUsers())
 
 
   }, [])
@@ -44,6 +47,9 @@ function App() {
       </ProtectedRoute>
       <ProtectedRoute exact path="/addpost">
         <Addpost />
+      </ProtectedRoute>
+      <ProtectedRoute exact path="/allusers">
+        <AllUsers />
       </ProtectedRoute>
     </div>
   );

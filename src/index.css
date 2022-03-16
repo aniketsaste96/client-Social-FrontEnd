@@ -131,7 +131,7 @@ html {
 p {
   color: grey;
   margin: 5px !important;
-  font-size: 18px !important;
+  font-size: 18px;
 }
 
 .iconsBelow {

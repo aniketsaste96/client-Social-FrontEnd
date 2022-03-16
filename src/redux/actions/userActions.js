@@ -44,3 +44,25 @@ export const userLogin = (values) => async dispatch => {
 
     }
 }
+
+//get all users
+export const getAllUsers = (values) => async dispatch => {
+
+
+
+    console.log()
+    dispatch({ type: 'LOADING', payload: true })
+
+    try {
+        const response = await axios.get('/api/users/getallusers', values)
+        dispatch({ type: 'LOADING', payload: false })
+        dispatch({ type: 'GET_ALL_USERS', payload: response.data })
+
+
+    } catch (error) {
+        console.log(error)
+        dispatch({ type: 'LOADING', payload: false })
+        message.error('something went wrong')
+    }
+
+}
