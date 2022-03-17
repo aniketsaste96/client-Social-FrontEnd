@@ -13,8 +13,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 .bs1 {
@@ -170,4 +169,27 @@ h4 {
 .profilepic2 {
   width: 100px;
   height: 100px;
+}
+
+.postInProfilePage {
+  object-fit: cover;
+  width: 95%;
+  height: 300px;
+  border-radius: 15px !important;
+  margin-top: 10px;
+}
+
+input {
+  border-radius: 10px !important;
+  height: 50px !important;
+}
+
+label {
+  font-size: 20px !important;
+}
+
+.login {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
 }

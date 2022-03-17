@@ -10,6 +10,7 @@ import {
   LogoutOutlined,
   UsersOutlined,
 } from "@ant-design/icons";
+import HomeIcon from "@material-ui/icons/Home";
 import PersonIcon from "@material-ui/icons/Person";
 import "./defaultlayout.css";
 const { Header, Sider, Content } = Layout;
@@ -64,7 +65,7 @@ class DefaultLayout extends React.Component {
             //window.location.pathname highlight when we are in particular page
             defaultSelectedKeys={[window.location.pathname]}
           >
-            <Menu.Item key="/" icon={<UserOutlined />}>
+            <Menu.Item key="/" icon={<HomeIcon fontSize="large" />}>
               <Link to="/">Home</Link>
             </Menu.Item>
             <Menu.Item key="addpost" icon={<VideoCameraOutlined />}>

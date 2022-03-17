@@ -12,11 +12,11 @@ const Login = () => {
   }
   return (
     <>
-      <Row justify="center" className="register-div">
+      <Row justify="center" className="register-div ">
         <Col lg={5} xs={24}>
           <h3>Login</h3>
           <hr />
-          <Form layout="vertical" className="bs1 p-3" onFinish={login}>
+          <Form layout="vertical" className="bs1 p-3 login" onFinish={login}>
             <Form.Item
               label="username"
               name="username"

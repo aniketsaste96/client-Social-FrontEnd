@@ -66,7 +66,7 @@ const AllUsers = () => {
                             className="profilepic2"
                           />
                         )}
-                        <Link>{user.username}</Link>
+                        <Link to={`/profile/${user._id}`}>{user.username}</Link>
                         <p>{moment(user.createdAt).format("MMM DD yyyy")}</p>
                         {user.followers.find(
                           (obj) => obj === currentUser._id

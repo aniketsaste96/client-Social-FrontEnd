@@ -15,7 +15,7 @@ import { Col, Row, Input } from "antd";
 
 import { Modal } from "antd";
 const { TextArea } = Input;
-const Post = ({ post }) => {
+const Post = ({ post, postInProfilePage }) => {
   //comments
   const [commentModalVisibility, setCommentModalVisibility] = useState(false);
   const [comment, setComment] = useState("");
@@ -46,10 +46,12 @@ const Post = ({ post }) => {
     setCommentModalVisibility(false);
   };
 
+  console.log(post.user);
+
   return (
     <div className="bs1 p-2 mb-5 ">
       <div className="d-flex align-items-center justify-content-between ">
-        {post.user.profilePicUrl === "" ? (
+        {post.user.profilePicUrl == "" ? (
           <span className="profilepic1">
             {post.user.username[0].toUpperCase()}
           </span>

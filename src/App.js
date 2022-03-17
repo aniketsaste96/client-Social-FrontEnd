@@ -43,7 +43,7 @@ function App() {
       <ProtectedRoute exact path="/">
         <Home />
       </ProtectedRoute>
-      <ProtectedRoute exact path="/profile/:userid" >
+      <ProtectedRoute exact path="/profile/:id" >
         <Profile />
       </ProtectedRoute>
       <ProtectedRoute exact path="/addpost">
