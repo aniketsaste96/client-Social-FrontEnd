@@ -15,7 +15,7 @@ import { Col, Row, Input } from "antd";
 
 import { Modal } from "antd";
 const { TextArea } = Input;
-const Post = ({ post }) => {
+const Post = ({ post, postInProfilePage }) => {
   //comments
   const [commentModalVisibility, setCommentModalVisibility] = useState(false);
   const [comment, setComment] = useState("");
@@ -26,7 +26,6 @@ const Post = ({ post }) => {
   const alreadyLiked = post.likes.find(
     (obj) => obj.user.toString() === currentUser._id
   );
-
   //reloading after like of dislike
   const { likeOrUnlikeLoading, addCommentLoading } = useSelector(
     (state) => state.alertsReducer
@@ -46,27 +45,29 @@ const Post = ({ post }) => {
     dispatch(addComment({ postid: post._id, comment: comment }));
     setCommentModalVisibility(false);
   };
-  console.log(post);
+
+  console.log(post.user);
+
   return (
-    <div className="bs1 p-2 mb-5 ml-2 mt-2">
+    <div className="bs1 p-2 mb-5 ">
       <div className="d-flex align-items-center justify-content-between ">
-        {post.user?.profilePicUrl == "" ? (
+        {post.user.profilePicUrl == "" ? (
           <span className="profilepic1">
-            {post?.user.username[0].toUpperCase()}
+            {post.user.username[0].toUpperCase()}
           </span>
         ) : (
-          <img src={post.user?.profilePicUrl} alt="" className="profilepic2" />
+          <img src={post.user.profilePicUrl} alt="" className="profilepic2" />
         )}
         <Link className="pl-2 userText" to="/">
-          {post.user?.username.charAt(0).toUpperCase() +
-            post.user?.username.slice(1)}
+          {post.user.username.charAt(0).toUpperCase() +
+            post.user.username.slice(1)}
         </Link>
         <div>
-          <p> {moment(post?.createdAt).format("MMM DD yyyy")}</p>
+          <p> {moment(post.createdAt).format("MMM DD yyyy")}</p>
         </div>
       </div>
 
-      <img src={post?.image} alt="" className="postImage" />
+      <img src={post.image} alt="" className="postImage" />
       <p className="mb-1  text-left">{post.description}</p>
       <hr />
       <div className="iconsBelow">
@@ -80,7 +81,7 @@ const Post = ({ post }) => {
                 dispatch(LikeOrUnlikePost({ postid: post._id }));
               }}
             />
-            <p>{post?.likes.length}</p>
+            <p>{post.likes.length}</p>
           </IconButton>
         </Tooltip>
         <Tooltip title="Comment" arrow>
@@ -92,7 +93,7 @@ const Post = ({ post }) => {
                 setCommentModalVisibility(true);
               }}
             />
-            <p>{post?.comments.length}</p>
+            <p>{post.comments.length}</p>
           </IconButton>
         </Tooltip>
       </div>
@@ -119,19 +120,19 @@ const Post = ({ post }) => {
                 setComment(e.target.value);
               }}
             />
-            {post?.comments.map((comment) => {
+            {post.comments.map((comment) => {
               const user = users?.find((obj) => obj._id === comment.user);
-
+              console.log(user);
               return (
                 <div className="d-flex align-items-center mt-2 justify-content-between">
                   <div className="d-flex align-items-center">
                     {user?.profilePicUrl == "" ? (
                       <span className="profilepic1">
-                        {user?.username[0].toUpperCase()}
+                        {user.username[0].toUpperCase()}
                       </span>
                     ) : (
                       <img
-                        src={post.user?.profilePicUrl}
+                        src={post.user.profilePicUrl}
                         alt=""
                         className="profilepic2"
                       />

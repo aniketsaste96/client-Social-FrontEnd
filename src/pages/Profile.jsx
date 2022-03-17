@@ -12,9 +12,9 @@ const Profile = ({ match }) => {
   const { users } = useSelector((state) => state.usersReducer);
   const { posts } = useSelector((state) => state.postsReducer);
   //find user
-  const user = users.find((obj) => obj._id == id);
+  const user = users.find(async (obj) => (await obj._id) == id);
   const currentuser = JSON.parse(localStorage.getItem("user"));
-  const userposts = posts.filter((obj) => obj.user._id == id);
+  const userposts = posts.filter(async (obj) => (await obj.user._id) == id);
 
   console.log(user);
 
@@ -27,7 +27,7 @@ const Profile = ({ match }) => {
               <Col lg={12} sm={24} xs={24}>
                 <div className="bs1 m2 p-2 text-left">
                   <div className="d-flex align-items-center">
-                    {user.profilePicUrl === "" ? (
+                    {user?.profilePicUrl === "" ? (
                       <span className="profilepic1 m-1">
                         {user.username[0].toUpperCase()}
                       </span>

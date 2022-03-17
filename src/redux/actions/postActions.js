@@ -40,7 +40,7 @@ export const getAllPosts = () => async dispatch => {
         dispatch({ type: 'GET_ALL_POSTS', payload: response.data })
 
     } catch (error) {
-        console.log(error)
+
         dispatch({ type: 'LOADING', payload: false })
         message.error('something went wrong')
     }

@@ -130,7 +130,7 @@ html {
   color: white;
 }
 .postImage {
-  object-fit: cover;
+  object-fit: contain;
   width: 95%;
   height: 500px;
   border-radius: 15px !important;

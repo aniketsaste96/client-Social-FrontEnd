@@ -46,7 +46,7 @@ export const userLogin = (values) => async dispatch => {
 }
 
 //get all users
-export const getAllUsers = (values) => async dispatch => {
+export const getAllUsers = () => async dispatch => {
     dispatch({ type: 'LOADING', payload: true })
 
     try {

@@ -8,7 +8,7 @@ const EditProfile = () => {
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("user"));
   const [profilePicUrl, setProfilePicUrl] = useState(user.profilePicUrl);
-
+  console.log(user);
   //post edit and upload
   const handleFileSubmit = (e) => {
     //target the file
