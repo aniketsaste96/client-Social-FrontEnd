@@ -12,6 +12,7 @@ import {
   getAllPosts,
   addComment,
   editPost,
+  deletePost,
 } from "../../redux/actions/postActions";
 import { useDispatch, useSelector } from "react-redux";
 import { Col, Row, Input } from "antd";
@@ -32,13 +33,21 @@ const Post = ({ post, postInProfilePage }) => {
   );
 
   //reloading after like of dislike
-  const { likeOrUnlikeLoading, addCommentLoading } = useSelector(
-    (state) => state.alertsReducer
-  );
+  const {
+    likeOrUnlikeLoading,
+    addCommentLoading,
+    editPostLoading,
+    deletePostLoading,
+  } = useSelector((state) => state.alertsReducer);
   useEffect(() => {
     //fire  getAllPosts() when anything changes in likeOrUnlikeLoading
     dispatch(getAllPosts());
-  }, [likeOrUnlikeLoading, addCommentLoading]);
+  }, [
+    likeOrUnlikeLoading,
+    addCommentLoading,
+    editPostLoading,
+    deletePostLoading,
+  ]);
 
   const dispatch = useDispatch();
 
@@ -108,7 +117,14 @@ const Post = ({ post, postInProfilePage }) => {
             </Tooltip>
             <Tooltip title="Delete" arrow>
               <IconButton aria-label="Delete">
-                <DeleteIcon className="Icons" fontSize="large" color="error" />
+                <DeleteIcon
+                  className="Icons"
+                  fontSize="large"
+                  color="error"
+                  onClick={() => {
+                    dispatch(deletePost({ _id: post._id }));
+                  }}
+                />
               </IconButton>
             </Tooltip>
           </div>
@@ -188,6 +204,7 @@ const Post = ({ post, postInProfilePage }) => {
         closable={false}
         onOk={() => {
           dispatch(editPost({ _id: post._id, description: description }));
+          setEditModalVisibility(false);
         }}
         onCancel={() => {
           setEditModalVisibility(false);

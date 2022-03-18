@@ -55,17 +55,38 @@ export const editPost = (values) => async dispatch => {
 
 
     console.log(values)
-    dispatch({ type: 'LOADING', payload: true })
+    dispatch({ type: 'EDIT_POST_LOADING', payload: true })
 
     try {
         await axios.post('/api/posts/editpost', values)
-        dispatch({ type: 'LOADING', payload: false })
+        dispatch({ type: 'EDIT_POST_LOADING', payload: false })
         message.success('Post updated successfully')
         window.location.href = '/'
 
     } catch (error) {
         console.log(error)
-        dispatch({ type: 'LOADING', payload: false })
+        dispatch({ type: 'EDIT_POST_LOADING', payload: false })
+        message.error('something went wrong')
+    }
+
+}
+//deletePost
+export const deletePost = (values) => async dispatch => {
+
+
+
+
+    dispatch({ type: 'DELETE_POST_LOADING', payload: true })
+
+    try {
+        await axios.post('/api/posts/deletepost', values)
+        dispatch({ type: 'DELETE_POST_LOADING', payload: false })
+        message.success('Post deleted successfully')
+        window.location.href = '/'
+
+    } catch (error) {
+        console.log(error)
+        dispatch({ type: 'DELETE_POST_LOADING', payload: false })
         message.error('something went wrong')
     }
 
