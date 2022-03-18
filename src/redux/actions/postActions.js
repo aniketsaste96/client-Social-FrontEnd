@@ -48,6 +48,44 @@ export const getAllPosts = () => async dispatch => {
 }
 
 
+
+//addPost
+export const editPost = (values) => async dispatch => {
+
+
+
+    console.log(values)
+    dispatch({ type: 'LOADING', payload: true })
+
+    try {
+        await axios.post('/api/posts/editpost', values)
+        dispatch({ type: 'LOADING', payload: false })
+        message.success('Post updated successfully')
+        window.location.href = '/'
+
+    } catch (error) {
+        console.log(error)
+        dispatch({ type: 'LOADING', payload: false })
+        message.error('something went wrong')
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //like dislike
 
 

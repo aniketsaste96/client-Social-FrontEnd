@@ -52,22 +52,24 @@ const AllUsers = () => {
               return (
                 <>
                   {/* show all users available to follow */}
-                  {currentUser._id !== user._id && (
+                  {currentUser._id !== user?._id && (
                     <Col lg={5} xs={24} className="text-left mt-2">
                       <div className="bs1 p-2">
-                        {user.profilePicUrl === "" ? (
+                        {user?.profilePicUrl === "" ? (
                           <span className="profilepic1 m-1">
-                            {user.username[0].toUpperCase()}
+                            {user?.username[0].toUpperCase()}
                           </span>
                         ) : (
                           <img
-                            src={user.profilePicUrl}
+                            src={user?.profilePicUrl}
                             alt=""
                             className="profilepic2"
                           />
                         )}
-                        <Link to={`/profile/${user._id}`}>{user.username}</Link>
-                        <p>{moment(user.createdAt).format("MMM DD yyyy")}</p>
+                        <Link to={`/profile/${user?._id}`}>
+                          {user?.username}
+                        </Link>
+                        <p>{moment(user?.createdAt).format("MMM DD yyyy")}</p>
                         {user.followers.find(
                           (obj) => obj === currentUser._id
                         ) ? (
