@@ -13,11 +13,13 @@ import {
 import HomeIcon from "@material-ui/icons/Home";
 import PersonIcon from "@material-ui/icons/Person";
 import "./defaultlayout.css";
+import AddIcon from "@material-ui/icons/Add";
+import PeopleIcon from "@material-ui/icons/People";
 const { Header, Sider, Content } = Layout;
 
 class DefaultLayout extends React.Component {
   state = {
-    collapsed: false,
+    collapsed: true,
   };
 
   toggle = () => {
@@ -35,15 +37,22 @@ class DefaultLayout extends React.Component {
         <Layout className="site-layout">
           <Header
             className="site-layout-background bs1 header"
-            style={{ padding: 0 }}
+            style={{
+              position: "sticky",
+              top: 0,
+
+              width: "100%",
+              padding: 0,
+              zIndex: 9999,
+            }}
           >
-            <div className="d-flex justify-content-between align-items-center bs1">
+            <div className="d-flex justify-content-between align-items-center p-3">
               <h4>
                 {" "}
                 <PersonIcon fontSize="large" />{" "}
                 {JSON.parse(localStorage.getItem("user")).username}
               </h4>
-              <h2>Social Media</h2>
+
               {React.createElement(
                 this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
                 {
@@ -57,7 +66,18 @@ class DefaultLayout extends React.Component {
             {this.props.children}
           </Content>
         </Layout>
-        <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
+        <Sider
+          style={{
+            position: "sticky",
+            top: 0,
+            bottom: 0,
+            overflow: "auto",
+            height: "100vh",
+          }}
+          trigger={null}
+          collapsible
+          collapsed={this.state.collapsed}
+        >
           <div className="logo" />
           <Menu
             theme="dark"
@@ -68,13 +88,13 @@ class DefaultLayout extends React.Component {
             <Menu.Item key="/" icon={<HomeIcon fontSize="large" />}>
               <Link to="/">Home</Link>
             </Menu.Item>
-            <Menu.Item key="addpost" icon={<VideoCameraOutlined />}>
+            <Menu.Item key="addpost" icon={<AddIcon fontSize="large" />}>
               <Link to="/addpost">Add post</Link>
             </Menu.Item>
             <Menu.Item key="profile" icon={<UserOutlined />}>
               <Link to={`/profile/${user._id}`}>Profile</Link>
             </Menu.Item>
-            <Menu.Item key="allusers" icon={<UserOutlined />}>
+            <Menu.Item key="allusers" icon={<PeopleIcon fontSize="large" />}>
               <Link to="/allusers">All Users</Link>
             </Menu.Item>
             <Menu.Item key="5" icon={<LogoutOutlined />}>

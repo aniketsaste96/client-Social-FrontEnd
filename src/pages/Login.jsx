@@ -11,11 +11,14 @@ const Login = () => {
     dispatch(userLogin(values));
   }
   return (
-    <>
-      <Row justify="center" className="register-div ">
+    <div className="register-div ">
+      <Row justify="center" className="regiM ">
         <Col lg={5} xs={24}>
+          <p>username:guest</p>
+          <p>password:12345678</p>
           <h3>Login</h3>
           <hr />
+
           <Form layout="vertical" className="bs1 p-3 login" onFinish={login}>
             <Form.Item
               label="username"
@@ -29,18 +32,18 @@ const Login = () => {
               name="password"
               rules={[{ required: true }]}
             >
-              <Input />
+              <Input type="password" />
             </Form.Item>
 
             <Button type="primary" htmlType="submit">
               Login <LockOpenIcon />
             </Button>
-
+            <br />
             <Link to="/register"> Not registred? Register here</Link>
           </Form>
         </Col>
       </Row>
-    </>
+    </div>
   );
 };
 

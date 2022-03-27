@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import DefaultLayout from "../components/default Layout/DefaultLayout";
 import { Row, Col, Input } from "antd";
 import { useSelector } from "react-redux";
@@ -7,6 +7,7 @@ import moment from "moment";
 import EditIcon from "@material-ui/icons/Edit";
 import { Button } from "@material-ui/core";
 import Post from "../components/default Layout/Post";
+import Modal from "antd/lib/modal/Modal";
 const Profile = ({ match }) => {
   const { id } = useParams();
   const { users } = useSelector((state) => state.usersReducer);
@@ -17,7 +18,8 @@ const Profile = ({ match }) => {
   const user = users.find(async (obj) => (await obj?._id) === id);
   const userposts = posts.filter(async (obj) => (await obj.user?._id) === id);
 
-  console.log(currentuser);
+  // const [followersModalDisplay, setFollowersModalDisplay] = useState(false);
+  // const [followingsModalDisplay, setFolloingsModalDisplay] = useState(false);
 
   return (
     <>
@@ -45,7 +47,7 @@ const Profile = ({ match }) => {
                         {moment(user.createdAt).format("MMM DD yyyy")}
                       </p>
                       <Button variant="contained">
-                        {currentuser?._id === user?._id && (
+                        {currentuser?._id !== user?._id && (
                           <Link to="/editprofile">Edit profile</Link>
                         )}
                       </Button>
@@ -56,16 +58,20 @@ const Profile = ({ match }) => {
                       ? "Full Stack Developer"
                       : currentuser.bio}
                   </p>
-                  <div className="text-left mt-2">
-                    <Button variant="contained" color="success">
-                      Followers:{currentuser.followers.length}
+                  <div className="text-left mt-2 followz">
+                    <Button
+                      variant="contained"
+                      color="success"
+                      // onClick={() => setFollowersModalDisplay(true)}
+                    >
+                      Followers:{currentuser?.followers?.length}
                     </Button>
                     <Button
                       variant="contained"
                       color="success"
                       className="ml-2"
                     >
-                      Followings:{currentuser.following.length}
+                      Followings:{currentuser?.following?.length}
                     </Button>
                   </div>
                   <p style={{ fontSize: 16, color: "black" }}>
@@ -75,12 +81,12 @@ const Profile = ({ match }) => {
                 </div>
               </Col>
             </Row>
-            {user.followers.find((obj) => obj == currentuser._id) ||
+            {user?.followers?.find((obj) => obj == currentuser._id) ||
             user.privateAccount == false ||
             user._id == currentuser._id ? (
               //conditional rendering
               <Row gutter={16} justify="center">
-                {userposts.map((post) => {
+                {userposts?.map((post) => {
                   return (
                     <Col lg={5} xs={24} sm={24}>
                       <Post post={post} postInProfilePage={true} />
@@ -91,6 +97,40 @@ const Profile = ({ match }) => {
             ) : (
               <p>This Account is Private</p>
             )}
+            {/* 
+            <Modal
+              title="followers"
+              visible={followersModalDisplay}
+              closable={false}
+              onClose={() => setFollowersModalDisplay(false)}
+            >
+              {user.followers.map((obj) => {
+                const followerUser = users.find((o) => o._id === obj);
+
+                return (
+                  <div className="d-flex align-items-center bs1 p-1">
+                    {followerUser?.profilePicUrl === "" ? (
+                      <span className="profilepic1 m-1">
+                        {followerUser?.username[0].toUpperCase()}
+                      </span>
+                    ) : (
+                      <img
+                        src={followerUser?.profilePicUrl}
+                        alt=""
+                        className="profilepic1"
+                      />
+                    )}
+                    <div>
+                      <Link> {followerUser?.username} </Link>
+                      <p>
+                        Since:{" "}
+                        {moment(followerUser?.createdAt).format("MMM DD yyyy")}{" "}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </Modal> */}
           </>
         )}
       </DefaultLayout>

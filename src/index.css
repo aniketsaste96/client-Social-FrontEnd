@@ -181,7 +181,7 @@ h4 {
 
 input {
   border-radius: 10px !important;
-  height: 50px !important;
+  height: 40px !important;
 }
 
 label {
@@ -192,4 +192,17 @@ label {
   border: 1px solid black;
   border-radius: 10px;
   padding: 10px;
+}
+
+@media only screen and (max-width: 500px) {
+  .followz,
+  .text-left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .profilepic1 {
+    display: none;
+  }
 }

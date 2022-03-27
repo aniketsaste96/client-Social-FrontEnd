@@ -30,18 +30,19 @@ const Register = () => {
               name="password"
               rules={[{ required: true }]}
             >
-              <Input />
+              <Input type="password" />
             </Form.Item>
             <Form.Item
               label="confirm password"
               name="cpassword"
               rules={[{ required: true }]}
             >
-              <Input />
+              <Input type="password" />
             </Form.Item>
             <Button type="primary" htmlType="submit">
               Register
             </Button>
+            <br />
             <Link to="/login"> Already registred? Login here</Link>
           </Form>
         </Col>
