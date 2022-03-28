@@ -12,6 +12,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { useEffect } from "react";
 import { getAllPosts } from './redux/actions/postActions';
 import { getAllUsers } from './redux/actions/userActions';
+import BarChart from './components/default Layout/charts/BarChart';
 import AllUsers from './pages/AllUsers';
 function App() {
 
@@ -54,6 +55,9 @@ function App() {
       </ProtectedRoute>
       <ProtectedRoute exact path="/editprofile">
         <EditProfile />
+      </ProtectedRoute>
+      <ProtectedRoute exact path="/charts">
+        <BarChart />
       </ProtectedRoute>
     </div>
   );

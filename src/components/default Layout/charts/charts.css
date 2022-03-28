@@ -1,0 +1,13 @@
+.charHeading {
+  color: black;
+  text-align: center;
+  text-decoration: underline;
+}
+.chart {
+  margin: 10px;
+  margin-bottom: 30px;
+}
+
+.chartHr {
+  margin: 20px;
+}

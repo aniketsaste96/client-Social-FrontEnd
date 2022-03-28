@@ -10,6 +10,7 @@ import {
   LogoutOutlined,
   UsersOutlined,
 } from "@ant-design/icons";
+import TimelineIcon from "@material-ui/icons/Timeline";
 import HomeIcon from "@material-ui/icons/Home";
 import PersonIcon from "@material-ui/icons/Person";
 import "./defaultlayout.css";
@@ -96,6 +97,9 @@ class DefaultLayout extends React.Component {
             </Menu.Item>
             <Menu.Item key="allusers" icon={<PeopleIcon fontSize="large" />}>
               <Link to="/allusers">All Users</Link>
+            </Menu.Item>
+            <Menu.Item key="charts" icon={<TimelineIcon fontSize="large" />}>
+              <Link to="/charts">Analysis</Link>
             </Menu.Item>
             <Menu.Item key="5" icon={<LogoutOutlined />}>
               <Link
