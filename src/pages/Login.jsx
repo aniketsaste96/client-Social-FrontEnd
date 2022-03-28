@@ -14,21 +14,21 @@ const Login = () => {
     <div className="register-div ">
       <Row justify="center" className="regiM ">
         <Col lg={5} xs={24}>
-          <p>username:guest</p>
-          <p>password:12345678</p>
-          <h3>Login</h3>
+          <p>username : guest</p>
+          <p>password : 12345678</p>
+          <h3 style={{ color: "white" }}>Login</h3>
           <hr />
 
           <Form layout="vertical" className="bs1 p-3 login" onFinish={login}>
             <Form.Item
-              label="username"
+              label={<label style={{ color: "white" }}>Username</label>}
               name="username"
               rules={[{ required: true }]}
             >
               <Input />
             </Form.Item>
             <Form.Item
-              label="password"
+              label={<label style={{ color: "white" }}>Password</label>}
               name="password"
               rules={[{ required: true }]}
             >
@@ -38,6 +38,7 @@ const Login = () => {
             <Button type="primary" htmlType="submit">
               Login <LockOpenIcon />
             </Button>
+            <br />
             <br />
             <Link to="/register"> Not registred? Register here</Link>
           </Form>

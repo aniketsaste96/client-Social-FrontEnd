@@ -7,12 +7,13 @@ import Post from "../components/default Layout/Post";
 const Home = () => {
   const { users } = useSelector((state) => state.usersReducer);
   const { posts } = useSelector((state) => state.postsReducer);
+  console.log(posts);
   return (
     <>
       <DefaultLayout>
         <Row justify="center">
           <Col md={12} sx={24}>
-            {posts.map((post) => {
+            {posts?.map((post) => {
               return <Post post={post} />;
             })}
           </Col>

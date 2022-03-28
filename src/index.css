@@ -10,6 +10,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: "Montserrat", sans-serif !important;
+  background-color: #0a0a0a !important;
+  color: whitesmoke !important;
 }
 
 code {
@@ -65,21 +67,21 @@ html {
   left: 0%;
   top: 0%;
   animation: rotate-one 1s linear infinite;
-  border-bottom: 5px solid #0a0a0a;
+  border-bottom: 8px solid #0a0a0a;
 }
 
 .inner.two {
   right: 0%;
   top: 0%;
   animation: rotate-two 1s linear infinite;
-  border-right: 5px solid #0808f3;
+  border-right: 8px solid #0808f3;
 }
 
 .inner.three {
   right: 0%;
   bottom: 0%;
   animation: rotate-three 1s linear infinite;
-  border-top: 5px solid #f80713;
+  border-top: 8px solid red;
 }
 
 @keyframes rotate-one {

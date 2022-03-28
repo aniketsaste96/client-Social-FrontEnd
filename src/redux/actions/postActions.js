@@ -15,7 +15,7 @@ export const addPost = (values) => async dispatch => {
     dispatch({ type: 'LOADING', payload: true })
 
     try {
-        await axios.post('/api/posts/addpost', values)
+        await axios.post('https://socialmediacap.herokuapp.com/api/posts/addpost', values)
         dispatch({ type: 'LOADING', payload: false })
         message.success('Post added successfully')
         window.location.href = '/'
@@ -35,7 +35,7 @@ export const getAllPosts = () => async dispatch => {
     dispatch({ type: 'LOADING', payload: true })
 
     try {
-        const response = await axios.get('/api/posts/getallposts')
+        const response = await axios.get('https://socialmediacap.herokuapp.com/api/posts/getallposts')
         dispatch({ type: 'LOADING', payload: false })
         dispatch({ type: 'GET_ALL_POSTS', payload: response.data })
 
@@ -58,7 +58,7 @@ export const editPost = (values) => async dispatch => {
     dispatch({ type: 'EDIT_POST_LOADING', payload: true })
 
     try {
-        await axios.post('/api/posts/editpost', values)
+        await axios.post('https://socialmediacap.herokuapp.com/api/posts/editpost', values)
         dispatch({ type: 'EDIT_POST_LOADING', payload: false })
         message.success('Post updated successfully')
         window.location.href = '/'
@@ -79,7 +79,7 @@ export const deletePost = (values) => async dispatch => {
     dispatch({ type: 'DELETE_POST_LOADING', payload: true })
 
     try {
-        await axios.post('/api/posts/deletepost', values)
+        await axios.post('https://socialmediacap.herokuapp.com/api/posts/deletepost', values)
         dispatch({ type: 'DELETE_POST_LOADING', payload: false })
         message.success('Post deleted successfully')
         window.location.href = '/'
@@ -120,7 +120,7 @@ export const LikeOrUnlikePost = (values) => async dispatch => {
     dispatch({ type: 'LIKE_UNLIKE_LOADING', payload: true })
 
     try {
-        await axios.post('/api/posts/likeorunlikepost', values)
+        await axios.post('https://socialmediacap.herokuapp.com/api/posts/likeorunlikepost', values)
         dispatch({ type: 'LIKE_UNLIKE_LOADING', payload: false })
 
 
@@ -144,7 +144,7 @@ export const addComment = (values) => async dispatch => {
     dispatch({ type: 'ADD_COMMENT_LOADING', payload: true })
 
     try {
-        await axios.post('/api/posts/addcomment', values)
+        await axios.post('https://socialmediacap.herokuapp.com/api/posts/addcomment', values)
         dispatch({ type: 'ADD_COMMENT_LOADING', payload: false })
 
 
